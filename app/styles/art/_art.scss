@@ -1,0 +1,39 @@
+@import "index";
+
+// after
+
+svg {
+  fill: $dark-gray;
+}
+
+#title {
+  margin: 3em auto;
+}
+
+h1 {
+  font-size: 1.5em;
+}
+
+.pane {
+  max-width: 24em;
+  margin: 1em auto;
+  text-align: center;
+}
+
+.menu {
+  max-width: 16em;
+  margin: 2em auto;
+  a {
+    width: 100%;
+    display: block;
+    margin-top: 0.1em;
+    background: $blue;
+    color: $base-background-color;
+    padding: 0.5em;
+    font-size: 1.2em;
+    font-weight: 600;
+    &:hover {
+      background: $dark-gray;
+    }
+  }
+}
