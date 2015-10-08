@@ -9,3 +9,11 @@
 @import "lists";
 @import "tables";
 @import "typography";
+
+:focus {
+  // outline-color: darken($action-color, 20%);
+  // outline-style: solid;
+  // outline-width: $base-spacing / 6;
+  outline: none;
+  box-shadow: 0 0 0 ($base-font-size / 4) darken($action-color, 20%);
+}

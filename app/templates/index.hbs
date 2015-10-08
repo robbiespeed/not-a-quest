@@ -2,11 +2,9 @@
   {{partial 'art/title-mark'}}
 </h1>
 <h2>Characters: ({{model.length}})</h2>
-<ul class="list">
-  {{#each model as |player|}}
-    <li>{{player.name}}</li>
-  {{/each}}
-</ul>
 <ul class="menu">
+  {{#each model as |player|}}
+    <li>{{#link-to 'edit' player}}{{player.name}}{{/link-to}}</li>
+  {{/each}}
   <li>{{#link-to 'create'}}Create Character{{/link-to}}</li>
 </ul>

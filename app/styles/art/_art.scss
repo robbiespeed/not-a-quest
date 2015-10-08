@@ -17,23 +17,29 @@ h1 {
 .pane {
   max-width: 24em;
   margin: 1em auto;
+  padding: 0 1em;
   text-align: center;
 }
 
 .menu {
-  max-width: 16em;
   margin: 2em auto;
-  a {
-    width: 100%;
-    display: block;
-    margin-top: 0.1em;
-    background: $blue;
-    color: $base-background-color;
-    padding: 0.5em;
+  a, button {
+    position: relative;
+    display: inline-block;
+    margin: 0.2em auto;
+    padding: 0.5em 2.5em;
     font-size: 1.2em;
-    font-weight: 600;
-    &:hover {
-      background: $dark-gray;
+    &::before, &::after {
+      display: inline-block;
+      position: absolute;
+      top: 50%;
+      margin-top: -0.75em;
+    }
+    &::before {
+      left: 0.5em;
+    }
+    &::after {
+      right: 0.5em;
     }
   }
 }

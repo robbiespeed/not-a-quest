@@ -24,19 +24,33 @@ p {
 }
 
 a {
-  color: $action-color;
+  color: $base-font-color;
   text-decoration: none;
-  transition: color 0.1s linear;
+  display: inline-block;
+  padding: 0 0.5em;
+  transition: all 0.1s linear;
 
-  &:active,
-  &:focus,
   &:hover {
-    color: darken($action-color, 15%);
+    color: $action-color;
+    background-color: $white-gray;
+  }
+
+  &:active {
+    background-color: $light-gray;
   }
 
   &:active,
   &:focus {
     outline: none;
+    color: darken($action-color, 20%);
+    background-color: $light-gray;
+  }
+
+  &::before {
+    content: "<-\00A0";
+  }
+  &::after {
+    content: "\00A0->";
   }
 }
 

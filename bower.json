@@ -17,6 +17,6 @@
     "qunit": "~1.18.0"
   },
   "devDependencies": {
-    "ember-localstorage-adapter": "0.5.4"
+    "ember-localstorage-adapter": "git://github.com/locks/ember-localstorage-adapter.git#6a882817b080827fb4112a56f8e880e260c9efa0"
   }
 }

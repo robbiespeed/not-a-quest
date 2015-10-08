@@ -1,12 +1,26 @@
 <h1>
-  Character creation
+  Create A Character
 </h1>
 <p>
   <label>Name:
-    {{input value=name type='text' }}
+    {{input value=name type='text'
+        focus-in='nameFocusIn' focus-out='nameFocusOut'}}
   </label>
 </p>
+<p>
+  <label>Id:
+    {{input value=id type='text'}}
+  </label>
+  {{#if idConflicts}}
+    Seems that Id is taken friend, try another.
+  {{/if}}
+</p>
 <ul class="menu">
-  <li><a href="" {{action 'done' name}}>Done</a></li>
+  <li>
+    <button {{action 'done' name id isValid}}
+    disabled={{unless isValid true}}>
+      Create
+    </button>
+  </li>
   <li>{{#link-to 'index'}}Back Title{{/link-to}}</li>
 </ul>

@@ -2,30 +2,37 @@
 button {
   @include appearance(none);
   -webkit-font-smoothing: antialiased;
-  background-color: $action-color;
+  background-color: $base-font-color;
   border-radius: $base-border-radius;
   border: none;
-  color: #fff;
+  color: $base-background-color;
   cursor: pointer;
   display: inline-block;
   font-family: $base-font-family;
   font-size: $base-font-size;
-  font-weight: 600;
-  line-height: 1;
-  padding: 0.75em 1em;
+  padding: 0 0.5em;
   text-decoration: none;
   user-select: none;
-  vertical-align: middle;
-  white-space: nowrap;
+  transition: all 0.1s linear;
 
   &:hover,
   &:focus {
-    background-color: darken($action-color, 15%);
-    color: #fff;
+    background-color: $action-color;
+    color: $base-background-color;
   }
 
   &:disabled {
+    background-color: $base-font-color;
     cursor: not-allowed;
     opacity: 0.5;
+  }
+
+  &::before {
+    content: "+=\00A0";
+    display: inline-block;
+  }
+  &::after {
+    content: "\00A0=+";
+    display: inline-block;
   }
 }

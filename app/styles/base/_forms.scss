@@ -15,7 +15,7 @@ select {
 
 label {
   font-weight: 600;
-  margin-bottom: $small-spacing / 2;
+  margin-bottom: ($base-spacing / 2);
 
   &.required::after {
     content: "*";
@@ -32,23 +32,21 @@ textarea {
   background-color: $base-background-color;
   border: $base-border;
   border-radius: $base-border-radius;
-  box-shadow: $form-box-shadow;
   box-sizing: border-box;
   font-family: $base-font-family;
   font-size: $base-font-size;
-  margin-bottom: $base-spacing / 2;
+  font-weight: 400;
+  margin: ($base-spacing / 2) 0;
   padding: $base-spacing / 3;
-  transition: border-color;
+  transition: all 0.1s linear;
   width: 100%;
 
-  &:hover {
-    border-color: darken($base-border-color, 10%);
-  }
-
+  &:hover,
   &:focus {
     border-color: $action-color;
-    box-shadow: $form-box-shadow-focus;
-    outline: none;
+  }
+  &:focus {
+    background-color: $white-gray;
   }
 }
 
