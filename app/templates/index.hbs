@@ -4,7 +4,12 @@
 <h2>Characters: ({{model.length}})</h2>
 <ul class="menu">
   {{#each model as |player|}}
-    <li>{{#link-to 'edit' player}}{{player.name}}{{/link-to}}</li>
+    <li>{{#link-to 'edit' player.id}}{{player.name}}{{/link-to}}</li>
   {{/each}}
   <li>{{#link-to 'create'}}Create Character{{/link-to}}</li>
+  <li>
+    <button {{action 'createEntity'}}>
+      Create Entity
+    </button>
+  </li>
 </ul>

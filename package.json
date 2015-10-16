@@ -1,7 +1,7 @@
 {
   "name": "not-a-quest",
   "version": "0.0.0",
-  "description": "Small description for not-a-quest goes here",
+  "description": "Most likely not a quest.",
   "private": true,
   "directories": {
     "doc": "doc",
@@ -37,6 +37,7 @@
     "ember-cli-uglify": "^1.2.0",
     "ember-data": "1.13.8",
     "ember-disable-proxy-controllers": "^1.0.0",
-    "ember-export-application-global": "^1.0.3"
+    "ember-export-application-global": "^1.0.3",
+    "ember-local-storage": "robbiespeed/ember-local-storage#query"
   }
 }

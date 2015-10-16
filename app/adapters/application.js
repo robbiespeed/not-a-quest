@@ -1,5 +1,1 @@
-import DS from 'ember-data';
-
-export default DS.LSAdapter.extend({
-    namespace: 'not_a_quest'
-});
+export { default } from 'ember-local-storage/adapters/adapter';

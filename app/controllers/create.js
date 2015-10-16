@@ -4,7 +4,7 @@ export default Ember.Controller.extend({
   name: 'Traveller',
   id: 'traveller',
 
-  idConflicts: false,
+  idConflicts: [],
 
   isNameToIdOn: false,
   isNameToIdToggled: false,
@@ -18,17 +18,15 @@ export default Ember.Controller.extend({
       .replace(/^ /g, '').replace(/ +/g, ' ');
 
       this.set('name', value);
-      return value;
+
+      if (this.get('isNameToIdOn')) {this.set('id', value);}
     }
   ),
 
   idFormatter: Ember.observer(
-    'name',
     'id',
-    'isNameToIdOn',
     function () {
       let value;
-      let isNameToIdOn = this.get('isNameToIdOn');
 
       function format (value) {
         return value.toLowerCase()
@@ -43,7 +41,7 @@ export default Ember.Controller.extend({
 
       value = simpleName;
 
-      if (isNameToIdOn) {
+      if (this.get('isNameToIdOn')) {
         value = value.replace(/_$/g, '');
       }
       else if (simpleName.length < id.length) {
@@ -51,7 +49,6 @@ export default Ember.Controller.extend({
       }
 
       this.set('id', value);
-      return value;
     }
   ),
 
@@ -75,6 +72,9 @@ export default Ember.Controller.extend({
     },
     nameFocusOut () {
       this.set('isNameToIdOn', false);
+    },
+    nameInputChange () {
+      console.log('inputChanged');
     }
   }
 
