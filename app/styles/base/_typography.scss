@@ -32,18 +32,18 @@ a {
 
   &:hover {
     color: $action-color;
-    background-color: $white-gray;
+    background-color: lighten($action-color, 40%);
   }
 
   &:active {
-    background-color: $light-gray;
+    background-color: lighten($action-color, 30%);
   }
 
   &:active,
   &:focus {
     outline: none;
     color: darken($action-color, 20%);
-    background-color: $light-gray;
+    background-color: lighten($action-color, 30%);
   }
 
   &::before {

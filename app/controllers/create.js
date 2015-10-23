@@ -5,6 +5,13 @@ export default Ember.Controller.extend({
   id: 'traveller',
 
   idConflicts: [],
+  isIdConflict: Ember.computed(
+    'idConflicts.[]',
+    'id',
+    function () {
+      return this.get('idConflicts').contains(this.get('id'));
+    }
+  ),
 
   isNameToIdOn: false,
   isNameToIdToggled: false,
@@ -58,19 +65,23 @@ export default Ember.Controller.extend({
   isValid: Ember.computed(
     'name',
     'id',
+    'isIdConflict',
     // 'namePattern', // Not necessary unless changed dynamically
     // 'idPattern', // Not necessary unless changed dynamically
     function () {
       return !!this.get('namePattern').test(this.get('name')) &&
-             !!this.get('idPattern').test(this.get('id'));
+             !!this.get('idPattern').test(this.get('id')) &&
+             !this.get('isIdConflict');
     }
   ),
 
   actions: {
     nameFocusIn () {
+      console.log('nameFocusIn');
       this.set('isNameToIdOn', true);
     },
     nameFocusOut () {
+      console.log('nameFocusOut');
       this.set('isNameToIdOn', false);
     },
     nameInputChange () {

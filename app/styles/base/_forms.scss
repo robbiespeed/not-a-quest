@@ -46,7 +46,7 @@ textarea {
     border-color: $action-color;
   }
   &:focus {
-    background-color: $white-gray;
+    background-color: lighten($action-color, 40%);
   }
 }
 

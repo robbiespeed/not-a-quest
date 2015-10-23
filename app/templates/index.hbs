@@ -1,15 +1,11 @@
 <h1 id="title">
   {{partial 'art/title-mark'}}
 </h1>
-<h2>Characters: ({{model.length}})</h2>
+{{#if model}}<h2>Players: ({{model.length}})</h2>{{/if}}
 <ul class="menu">
-  {{#each model as |player|}}
-    <li>{{#link-to 'edit' player.id}}{{player.name}}{{/link-to}}</li>
+  {{#each model as |entity|}}
+    <li>{{#link-to 'edit' entity}}{{entity.id}}{{/link-to}}</li>
   {{/each}}
-  <li>{{#link-to 'create'}}Create Character{{/link-to}}</li>
-  <li>
-    <button {{action 'createEntity'}}>
-      Create Entity
-    </button>
-  </li>
+  {{#if model}}<li class="list-separator"></li>{{/if}}
+  <li>{{#link-to 'create'}}Create Player{{/link-to}}</li>
 </ul>

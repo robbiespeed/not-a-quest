@@ -4,49 +4,50 @@ export default Ember.Route.extend({
   actions: {
     done (name, id, isValid) {
       if (isValid) {
-        this.store.query('player', {
+        this.store.query('entity', {
           filter: { id: new RegExp('^'+id+'.*') }
         }).then((result) => {
-          let players = result.toArray();
-          let controller = this.controllerFor('create');
+          let entities = result.toArray();
           let idConflicts = [];
-  
-          if (Ember.isEmpty(players)) {
-            let entity = this.store.createRecord('entity', {
+          let isIdConflict = false;
+          
+          for (let entity of entities) {
+            let entityId = entity.get('id');
+            isIdConflict = entityId !== id && !isIdConflict ? false : true;
+            idConflicts.push(entityId);
+          }
+          
+          if (!isIdConflict) {
+            this.store.createRecord('entity', {
               id: id,
-            });
-            
-            entity.get('components').then((components) => {
-              components.pushObjects([
-                this.store.createRecord('name', {
-                  id: id,
-                  name: name
-                }),
-                this.store.createRecord('player', {
-                  id: id
-                }),
-              ]);
+            }).save().then((entity) => {
               
-              entity.save().then(() => {
-                components.save();
+              entity.get('components').then((components) => {
+                components.pushObjects([
+                  this.store.createRecord('name', {
+                    name: name
+                  }),
+                  this.store.createRecord('player', {}),
+                ]);
+                components.save().then(() => {
+                  this.transitionTo('index');
+                });
               });
             });
-            
-            this.transitionTo('index');
           }
           else {
-            for (let player of players) {
-              idConflicts.push(player.get('id'));
-            }
+            let currentConflicts = this.controller.get('idConflicts');
+            currentConflicts.pushObjects(idConflicts.filter((id) => {
+              return (currentConflicts.contains(id)) ? false : true;
+            }));
           }
-          controller.set('idConflicts', idConflicts);
         });
       }
     }
   },
   resetController: function (controller, isExiting) {
     if (isExiting) {
-      controller.set('idConflicts', false);
+      controller.set('idConflicts', []);
       controller.set('isNameToIdOn', false);
       controller.set('isNameToIdToggled', false);
       controller.set('name', 'Traveller');

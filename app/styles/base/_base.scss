@@ -10,10 +10,24 @@
 @import "tables";
 @import "typography";
 
-:focus {
-  // outline-color: darken($action-color, 20%);
-  // outline-style: solid;
-  // outline-width: $base-spacing / 6;
-  outline: none;
-  box-shadow: 0 0 0 ($base-font-size / 4) darken($action-color, 20%);
+
+@mixin focus($color, $darken-percent: 20%) {
+  $box-shadow: 0 0 0 ($base-font-size / 4) darken($color, $darken-percent);
+  @if & {
+    &:focus {
+      outline: none;
+      box-shadow: $box-shadow;
+    }
+  } @else {
+    :focus {
+      outline: none;
+      box-shadow: $box-shadow;
+    }
+  }
+}
+
+@include focus($action-color);
+
+.negative {
+  @include focus($negative-color);
 }

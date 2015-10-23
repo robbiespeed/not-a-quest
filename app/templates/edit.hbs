@@ -1,6 +1,13 @@
 <h1>
-  {{model.name}}
+  {{model.id}}
 </h1>
 <ul class="menu">
+  <li>
+    <button class="negative" {{action 'deleteEntity'}}
+      disabled={{unless canDelete true}}>
+      Delete Entity
+    </button>
+  </li>
+  <li class="list-separator"></li>
   <li>{{#link-to 'index'}}Back Title{{/link-to}}</li>
 </ul>

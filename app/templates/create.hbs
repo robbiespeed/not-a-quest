@@ -1,5 +1,5 @@
 <h1>
-  Create A Character
+  Create A Player
 </h1>
 <p>
   <label>Name:
@@ -11,16 +11,17 @@
   <label>Id:
     {{input value=id type='text'}}
   </label>
-  {{#if idConflicts}}
+  {{#if isIdConflict}}
     Seems that Id is taken friend, try another.
   {{/if}}
 </p>
 <ul class="menu">
   <li>
-    <button {{action 'done' name id isValid}}
+    <button class="btn-positive"{{action 'done' name id isValid}}
     disabled={{unless isValid true}}>
       Create
     </button>
   </li>
+  <li class="list-separator"></li>
   <li>{{#link-to 'index'}}Back Title{{/link-to}}</li>
 </ul>

@@ -35,4 +35,18 @@ button {
     content: "\00A0=+";
     display: inline-block;
   }
+  &.negative {
+    box-shadow: inset 2.125em 0 #ef5734, inset -2.125em 0 #ef5734,;
+    // border: 0.25em solid #ef5734;
+    &:hover,
+    &:focus {
+      background-color: $negative-color;
+    }
+    &::before {
+      content: "-=\00A0";
+    }
+    &::after {
+      content: "\00A0=-";
+    }
+  }
 }
