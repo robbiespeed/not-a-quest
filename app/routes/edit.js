@@ -12,8 +12,8 @@ export default Ember.Route.extend({
     });
   },
   areComponentsLoaded: Ember.computed({
-    get (key, value) {
-      return value;
+    get () {
+      return false;
     },
     set (key, value) {
       if (value === true) {
